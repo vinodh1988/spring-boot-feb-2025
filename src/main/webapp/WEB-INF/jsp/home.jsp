@@ -18,5 +18,8 @@
     <li> <%=name %></li>
  <% } %>
  </ul>
+ 
+ Application State : <%out.println(request.getAttribute("adata")); %>
+ Session State : <%out.println(request.getAttribute("sdata")); %>
 </body>
 </html>
