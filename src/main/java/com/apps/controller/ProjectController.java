@@ -20,12 +20,28 @@ import com.apps.services.ProjectService;
 import com.apps.utils.RecordAlreadyExistsException;
 import com.apps.utils.RecordNotFoundException;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/projects")
+@Tag(name = "Project List API", description="All the operations of project entity")
 public class ProjectController {
 
 @Autowired
 private ProjectService pservice;
+@Operation(
+		   summary="Gets all Projects",
+		   description="Get All Projects by sending min and max"
+		)
+		@ApiResponses(
+			 value = {
+					 @ApiResponse(responseCode="200", description="Computer object Matched"),
+					 @ApiResponse(responseCode="500", description="Server related error")
+			 }	
+			)
 @GetMapping("")
 	 public List<Project> getProjects
 	 (@RequestParam(required = false) Integer min,@RequestParam(required=false) Integer max) {
