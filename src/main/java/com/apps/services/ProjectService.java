@@ -37,6 +37,25 @@ public void addProject(Project p) throws RecordAlreadyExistsException {
       prepo.save(p);
  }
 
+public void updateProject(Project p) throws RecordNotFoundException {
+	Project project = prepo.findByPno(p.getPno());
+	if(project==null)
+		  throw new RecordNotFoundException();
+	p.setName(p.getName()==null?project.getName():p.getName());
+	p.setTeamsize(p.getTeamsize()==null?project.getTeamsize():p.getTeamsize());
+	p.setTechnology(p.getTechnology()==null?project.getTechnology():p.getTechnology());
+	prepo.save(p);
+	
+}
+
+public void deleteProject(Integer pno) throws RecordNotFoundException
+{
+	Project project =prepo.findByPno(pno);
+	if(project==null)
+		throw new RecordNotFoundException();
+	prepo.delete(project);
+}
+
 public Project getProject(Integer pno) throws RecordNotFoundException {
 	Project p=prepo.findByPno(pno);
 	if(p==null)
