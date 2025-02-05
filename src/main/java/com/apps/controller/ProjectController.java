@@ -26,16 +26,10 @@ private ProjectService pservice;
 		 return pservice.getProjects();
 	 }
 @PostMapping()
-public ResponseEntity<Object> addProject(@RequestBody Project project) {
-	try {
+public ResponseEntity<Object> addProject(@RequestBody Project project) throws RecordAlreadyExistsException{
+
 		pservice.addProject(project);
 		return new ResponseEntity<>(project,HttpStatus.CREATED);
-	}
-	catch(RecordAlreadyExistsException e) {
-		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-	}
-	catch(Exception e) {
-		return new ResponseEntity<>("Server side issue", HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+	
 }
 }
