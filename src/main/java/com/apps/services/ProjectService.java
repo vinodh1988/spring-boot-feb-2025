@@ -26,6 +26,10 @@ public List<Project> getProjects(){
 	return prepo.findAll();
 }
 
+public List<Project> getProjects(Integer min,Integer max){
+	return prepo.getProjects(min, max);
+}
+
 public void addProject(Project p) throws RecordAlreadyExistsException {
       Project project=prepo.findByPno(p.getPno());
       if(project!=null)

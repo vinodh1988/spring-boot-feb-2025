@@ -13,13 +13,13 @@ public class Project {
 @Column
     private String name;
 @Column	
-    private String teamsize;
+    private Integer teamsize;
 @Column	
     private String technology;
 	
 	public Project() {}
 	
-	public Project(Integer pno, String name, String teamsize, String technology) {
+	public Project(Integer pno, String name,Integer teamsize, String technology) {
 		super();
 		this.pno = pno;
 		this.name = name;
@@ -43,11 +43,11 @@ public class Project {
 		this.name = name;
 	}
 
-	public String getTeamsize() {
+	public Integer getTeamsize() {
 		return teamsize;
 	}
 
-	public void setTeamsize(String teamsize) {
+	public void setTeamsize(Integer teamsize) {
 		this.teamsize = teamsize;
 	}
 

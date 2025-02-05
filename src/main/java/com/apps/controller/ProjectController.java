@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apps.entities.Project;
@@ -24,15 +25,24 @@ public class ProjectController {
 @Autowired
 private ProjectService pservice;
 @GetMapping("")
-	 public List<Project> getProjects() {
-		 return pservice.getProjects();
+	 public List<Project> getProjects
+	 (@RequestParam(required = false) Integer min,@RequestParam(required=false) Integer max) {
+	System.out.println(min+"  "+max);
+	 if(min==null && max==null)
+	     return pservice.getProjects();
+	 if(min==null)
+		 return pservice.getProjects(0,max);
+	 if(max==null)
+		 return pservice.getProjects(min,Integer.MAX_VALUE);
+	 
+		 return pservice.getProjects(min,max);
 	 }
 @GetMapping("/{pno}")
 	public ResponseEntity<Object> getProject(@PathVariable Integer pno) throws RecordNotFoundException 
     {
 	    return new ResponseEntity<Object>(pservice.getProject(pno),HttpStatus.OK);
     }
-
+ 
 @PostMapping()
 public ResponseEntity<Object> addProject(@RequestBody Project project) throws RecordAlreadyExistsException{
 
