@@ -1,0 +1,7 @@
+
+insert into authors values(101,'Abraham');
+insert into authors values(102,'Morris');
+insert into books(bookno,category,name,price,authorno) values(1001,'Technology','Operating System',787,101);
+insert into books(bookno,category,name,price,authorno) values(1002,'Technology','Operating System Fundamentals',387,101);
+insert into books(bookno,category,name,price,authorno) values(1003,'Technology','Computer organization',787,102);
+insert into books(bookno,category,name,price,authorno) values(1004,'Technology','Micro Controllers',787,102);
