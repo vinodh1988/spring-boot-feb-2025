@@ -28,7 +28,7 @@ public class CentralExceptionHandler {
 	
 	@ExceptionHandler(value= {Exception.class})
 	protected ResponseEntity<Object> handleException(Exception e){
-
+         e.printStackTrace();
 		 return new ResponseEntity<>("Server issue...",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
