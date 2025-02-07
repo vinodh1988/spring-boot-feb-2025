@@ -54,7 +54,7 @@ public class SecurityConfig {
                 
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                                .requestMatchers("/authenticate", "/register","/h2-console","/h2-console/**").permitAll()
+                                .requestMatchers("/authenticate", "/actuator","/actuator/**","/register","/h2-console","/h2-console/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .exceptionHandling(exceptionHandling ->
